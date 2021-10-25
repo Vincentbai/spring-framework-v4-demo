@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="person1" class="au.com.vincentbai.spring.a_mod.Person">
+        <!--  通过子标签的形式给bean赋值  -->
+        <property name="id" value="1111"></property>
+        <property name="name" value="Jessie"></property>
+
+    </bean>
+
+    <!--  测试通过 ac.getClass(Person.class) 来获取对象，报错了 -->
+    <bean id="person2" class="au.com.vincentbai.spring.a_mod.Person">
+        <!--  通过子标签的形式给bean赋值  -->
+        <property name="id" value="1112"></property>
+        <property name="name" value="James"></property>
+
+    </bean>
+
+</beans>

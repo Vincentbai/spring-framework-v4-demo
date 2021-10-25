@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--  对设置的包中的类进行扫描， 对添加注解的类会在配置文件中自动生成bean xml -->
+    <!--  <context:include-filter> -> use-default-filters="false" -> annotation 包 assignable 类型  -->
+    <!--  <context:exclude-filter> -> use-default-filters="true" ->  annotation 包 assignable 类型  -->
+    <!--  <context:include-filter> 和 <context:exclude-filter> 不能同时出现  -->
+    <context:component-scan base-package="au.com.vincentbai.ioc.e_userMod" use-default-filters="true">
+<!--        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
+<!--        <context:include-filter type="assignable" expression="au.com.vincentbai.ioc.e_userMod.service.UserServiceImpl"/>-->
+<!--        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
+    </context:component-scan>
+
+
+</beans>

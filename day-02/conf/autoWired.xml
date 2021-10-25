@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- byName: bean的id和某bean中的属性名一致就自动装配; byType 如果两个相同类型的bean就会报错, 如果给父类和接口进行赋值，兼容性比较好 -->
+    <!-- 如果设置了byName 或者 byType 会对所有bean生效   -->
+    <!-- 都不建议使用   -->
+    <bean id="emp" class="au.com.vincentbai.ioc.d_autoWired.Emp" autowire="byName">
+        <property name="eid" value="10001"></property>
+        <property name="ename" value="Jack"></property>
+<!--        <property name="car" ref="car"></property>-->
+<!--        <property name="dept" ref="dept"></property>-->
+    </bean>
+
+    <bean id="car" class="au.com.vincentbai.ioc.d_autoWired.Car">
+        <property name="cid" value="11111"></property>
+        <property name="cname" value="BMW"></property>
+    </bean>
+
+    <bean id="car1" class="au.com.vincentbai.ioc.d_autoWired.Car">
+        <property name="cid" value="11111"></property>
+        <property name="cname" value="BMW"></property>
+    </bean>
+
+    <bean id="dept" class="au.com.vincentbai.ioc.d_autoWired.Dept">
+        <property name="did" value="2222"></property>
+        <property name="dname" value="Marketing"></property>
+    </bean>
+
+</beans>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="person" class="au.com.vincentbai.ioc.b_life.Person" init-method="init" destroy-method="destroy">
+        <property name="id" value="10001"></property>
+        <property name="gender" value="male"></property>
+    </bean>
+
+    <bean class="au.com.vincentbai.ioc.b_life.PostProcessor"></bean>
+</beans>

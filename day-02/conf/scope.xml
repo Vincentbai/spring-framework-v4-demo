@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 1. 作用范围就两个，singleton and prototype 单例模式一般在ApplicationContext容器初始化时就被创建了出来    -->
+    <bean id="student" class="au.com.vincentbai.ioc.a_scope.Student" scope="singleton">
+        <property name="sid" value="10001"></property>
+        <property name="sname" value="Vincent"></property>
+
+    </bean>
+
+    <!-- 2. bean的生命周期   -->
+
+</beans>

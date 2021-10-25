@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+    <bean id="s1" class="au.com.vincentbai.spring.b_di.Student">
+        <!-- 通过 set 方法来赋值，setId()-->
+        <property name="id" value="10010"></property>
+        <property name="name" value="Hamers"></property>
+        <property name="age" value="20"></property>
+        <property name="gender" value="male"></property>
+    </bean>
+
+    <!--  通过构造方法注入  -->
+    <bean id="s2" class="au.com.vincentbai.spring.b_di.Student">
+        <constructor-arg value="10086"></constructor-arg>
+        <constructor-arg value="Workers"></constructor-arg>
+        <constructor-arg value="24"></constructor-arg>
+        <constructor-arg value="male"></constructor-arg>
+    </bean>
+
+    <bean id="s3" class="au.com.vincentbai.spring.b_di.Student">
+        <constructor-arg value="10087"></constructor-arg>
+        <constructor-arg value="Helen"></constructor-arg>
+        <!--  防止和age混淆 -->
+        <constructor-arg value="90" index="2" type="java.lang.Double"></constructor-arg>
+        <constructor-arg value="female"></constructor-arg>
+    </bean>
+
+    <!--  通过 p 命名空间来赋值，是 property 标签的简写   -->
+    <bean id="s4" class="au.com.vincentbai.spring.b_di.Student" p:id="10033" p:name="Happer" p:age="30" p:gender="female" p:score="80"></bean>
+
+    <!--  字面量 和 ref  -->
+    <bean id="s5" class="au.com.vincentbai.spring.b_di.Student">
+        <property name="id" value="10005"></property>
+        <property name="name" value="Widow"></property>
+        <property name="age" value="40"></property>
+        <property name="gender" value="female"></property>
+        <property name="teacher" ref="teacher"></property>
+        <!--   级联，在Student中给teacher属性赋值     -->
+        <property name="teacher.tname" value="Hellen"></property>
+    </bean>
+
+    <bean id="teacher" class="au.com.vincentbai.spring.b_di.Teacher">
+        <property name="tid" value="20001"></property>
+        <property name="tname" value="Anna"></property>
+    </bean>
+
+    <!--  内部bean, 该内部bean 只属于 s6，在外部不能通过 ref 来访问-->
+    <bean id="s6" class="au.com.vincentbai.spring.b_di.Student">
+        <property name="id" value="10005"></property>
+        <property name="name" value="Widow"></property>
+        <property name="age" value="40"></property>
+        <property name="gender" value="female"></property>
+        <property name="teacher">
+            <bean id="tt" class="au.com.vincentbai.spring.b_di.Teacher">
+                <property name="tid" value="2222"></property>
+                <property name="tname" value="admin"></property>
+            </bean>
+        </property>
+    </bean>
+
+<!--    <bean id="s7" class="au.com.vincentbai.spring.b_di.Student">-->
+<!--        <property name="id" value="10005"></property>-->
+<!--        <property name="name" value="Widow"></property>-->
+<!--        <property name="age" value="40"></property>-->
+<!--        <property name="gender" value="female"></property>-->
+<!--        <property name="teacher" ref="tt"></property>-->
+<!--    </bean>-->
+
+    <bean id="t1" class="au.com.vincentbai.spring.b_di.Teacher">
+        <property name="tid" value="10010"></property>
+        <property name="tname" value="Andrew"></property>
+        <property name="cls">
+            <list>
+                <value>A</value>
+                <value>B</value>
+                <value>C</value>
+                <value>D</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="t2" class="au.com.vincentbai.spring.b_di.Teacher">
+        <property name="tid" value="10011"></property>
+        <property name="tname" value="Bell"></property>
+        <property name="students">
+            <list>
+                <ref bean="s1"></ref>
+                <ref bean="s2"></ref>
+                <ref bean="s3"></ref>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="t3" class="au.com.vincentbai.spring.b_di.Teacher">
+        <property name="tid" value="10011"></property>
+        <property name="tname" value="Bell"></property>
+        <property name="supervisorMap">
+            <map>
+                <entry>
+                    <key>
+                        <value>10001</value>
+                    </key>
+                    <value>Steven</value>
+                </entry>
+                <entry>
+                    <key>
+                        <value>10002</value>
+                    </key>
+                    <value>Jackie</value>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <util:list id="studentList">
+        <ref bean="s1" />
+        <ref bean="s2" />
+        <ref bean="s3" />
+    </util:list>
+
+    <util:map id="mapBean">
+        <entry>
+            <key><value>1</value></key>
+            <value>Live</value>
+        </entry>
+        <entry>
+            <key><value>2</value></key>
+            <value>Life</value>
+        </entry>
+    </util:map>
+
+</beans>
